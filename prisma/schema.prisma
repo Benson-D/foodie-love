@@ -53,17 +53,18 @@ model RecipeIngredient {
 }
 
 model User {
-  id             String               @id @default(cuid())
-  username       String               @unique @db.VarChar(30)
-  password       String
-  firstName      String
-  lastName       String
-  email          String               @unique
-  imageUrl       String?
-  isAdmin        Boolean              @default(false)
-  createdAt      DateTime             @default(now())
-  UsersRecipes   UserFavoriteRecipe[]
-  UsersGroceries UserGrocery[]
+  id                  String               @id @default(cuid())
+  username            String               @unique @db.VarChar(30)
+  password            String
+  firstName           String
+  lastName            String
+  email               String               @unique
+  imageUrl            String?
+  role                Role                 @default(CLIENT)
+  createdAt           DateTime             @default(now())
+  UsersRecipes        UserFavoriteRecipe[]
+  UsersGroceries      UserGrocery[]
+  UserEmailPreference UserEmailPreference?
 }
 
 model UserFavoriteRecipe {
@@ -86,4 +87,17 @@ model UserGrocery {
   @@id([usersId, itemsId])
   @@index([itemsId])
   @@index([usersId])
+}
+
+model UserEmailPreference {
+  id           String  @id @default(cuid())
+  emailUpdates Boolean
+  user         User    @relation(fields: [userId], references: [id])
+  userId       String  @unique
+}
+
+enum Role {
+  CLIENT
+  ADMIN
+  DEVELOPER
 }
