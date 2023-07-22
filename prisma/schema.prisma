@@ -17,7 +17,7 @@ model Recipe {
   prepTime     Int?
   cookingTime  Int
   recipeImage  String?
-  instructions String
+  instructions Json
   mealType     String?
   createdAt    DateTime             @default(now())
   ingredients  RecipeIngredient[]
@@ -68,25 +68,25 @@ model User {
 }
 
 model UserFavoriteRecipe {
-  userId    String
-  recipesId String
-  user      User   @relation(fields: [userId], references: [id])
-  recipe    Recipe @relation(fields: [recipesId], references: [id])
+  userId   String
+  recipeId String
+  user     User   @relation(fields: [userId], references: [id])
+  recipe   Recipe @relation(fields: [recipeId], references: [id])
 
-  @@id([userId, recipesId])
+  @@id([userId, recipeId])
   @@index([userId])
-  @@index([recipesId])
+  @@index([recipeId])
 }
 
 model UserGrocery {
-  usersId String
-  itemsId String
-  user    User       @relation(fields: [usersId], references: [id])
-  item    Ingredient @relation(fields: [itemsId], references: [id])
+  userId String
+  itemId String
+  user   User       @relation(fields: [userId], references: [id])
+  item   Ingredient @relation(fields: [itemId], references: [id])
 
-  @@id([usersId, itemsId])
-  @@index([itemsId])
-  @@index([usersId])
+  @@id([userId, itemId])
+  @@index([itemId])
+  @@index([userId])
 }
 
 model UserEmailPreference {
