@@ -7,6 +7,9 @@ import { api } from "~/utils/api";
 const Home: NextPage = () => {
   const hello = api.example.hello.useQuery({ text: "from tRPC" });
 
+  const data = api.recipe.getAll.useQuery();
+  console.log(data, "<====data");
+
   return (
     <>
       <Head>
