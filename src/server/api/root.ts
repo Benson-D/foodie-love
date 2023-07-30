@@ -1,6 +1,6 @@
 import { createTRPCRouter } from "~/server/api/trpc";
 import { exampleRouter } from "~/server/api/routers/example";
-import { recipeRouter } from "./routers/recipe";
+import { recipeRouter } from "~/server/api/routers/recipe";
 
 /**
  * This is the primary router for your server.
