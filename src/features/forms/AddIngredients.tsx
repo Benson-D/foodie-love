@@ -31,7 +31,7 @@ const AddIngredients = () => {
 	return (
 		<div className={`${pageDisplay} px-2`}>
 			<div className="mt-3 text-center sm:ml-4 sm:mt-0 sm:text-left">
-				<h3 className="pt-2 text-base font-semibold leading-6 text-gray-900">Ingredient List</h3>
+				<h3 className="pt-2 text-base font-semibold leading-6 text-gray-900">Ingredients</h3>
 				<section className="pb-4">
 					{initialIngredients.map((_, idx) => (
 						<Ingredient

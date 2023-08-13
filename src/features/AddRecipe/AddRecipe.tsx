@@ -2,6 +2,7 @@ import FormContext from "~/context/FormContext";
 import GeneralInfo from "../forms/Generalnfo";
 import useStep from "~/hooks/useStep";
 import AddIngredients from "../forms/AddIngredients";
+import AddInstructions from "../forms/AddInstructions";
 
 const AddRecipe = (): JSX.Element => {
 	const [step, helpers] = useStep(3);
@@ -20,6 +21,7 @@ const AddRecipe = (): JSX.Element => {
 			<form>
 				<GeneralInfo />
 				<AddIngredients />
+				<AddInstructions />
 			</form>
 			<footer className="bg-gray-50 py-3 sm:flex sm:flex-row-reverse sm:px-6 md:justify-between px-4">
 				<button type="button" 
