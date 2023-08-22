@@ -12,7 +12,7 @@ const GeneralInfo = () => {
 		<div className={`${pageDisplay} px-2`}>
 			<div className="mt-3 text-center sm:ml-4 sm:mt-0 sm:text-left">
 				<h3 className="pt-2 text-base font-semibold leading-6 text-gray-900">General Info</h3>
-				<section className="grid grid-cols-2 gap-9 pb-4">
+				<section className="grid sm:grid-cols-1 md:grid-cols-2 gap-9 pb-4">
 					<div className="relative mt-3 pr-4">
 						<input {...register("recipeName")} 
 							type="text" 
