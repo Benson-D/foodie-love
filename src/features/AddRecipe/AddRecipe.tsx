@@ -5,16 +5,48 @@ import AddIngredients from "../forms/AddIngredients";
 import AddInstructions from "../forms/AddInstructions";
 import { useForm, FormProvider, type SubmitHandler } from "react-hook-form";
 
+interface Instruction {
+	instruction: string;
+}
+
+interface Ingredients {
+	amount: number;
+	measurement: string | undefined;
+	ingredient: string;
+}
+
 interface FormValues  {
 	recipeName: string;
 	mealType: string;
 	prepTime: number;
 	cookingTime: number;
+	ingredients: Ingredients[];
+	instructions: Instruction[]
 }
 
 const AddRecipe = (): JSX.Element => {
 	const [step, helpers] = useStep(3);
-	const methods = useForm<FormValues>();
+	const methods = useForm<FormValues>({
+		defaultValues: {
+			recipeName: "",
+			mealType: "",
+			prepTime: undefined,
+			cookingTime: undefined,
+			ingredients: [
+				{ amount: undefined, measurement: '', ingredient: ''},
+				{ amount: undefined, measurement: '', ingredient: ''}, 
+				{ amount: undefined, measurement: '', ingredient: ''},
+			    { amount: undefined, measurement: '', ingredient: ''},   
+			],
+			instructions: [
+				{ instruction: ''},
+				{ instruction: ''},
+				{ instruction: ''},
+				{ instruction: ''},
+				{ instruction: ''},
+			]
+		}
+	});
 
 	const {
 		canGoToPreviousStep,
