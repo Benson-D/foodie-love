@@ -35,7 +35,7 @@ const MainModal = (): JSX.Element => {
 				<div className="fixed inset-0 z-10 overflow-y-auto">
 					<div className="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
 						<div className={`relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg ${mainCssModalDisplay}`}>
-							<article className="bg-white min-w-[420px]">
+							<article className="bg-white min-w-[340px]">
 								<header className="bg-emerald-500 px-4 py-3 flex justify-between">
 									<h4 className="text-stone-100 pt-1 pl-2">Create Form</h4>
 									<button type="button" 
