@@ -26,13 +26,13 @@ const Ingredient = ({ index, register }: { index: number; register: UseFormRegis
 const AddIngredients = () => {
 	const { register, control } = useFormContext();
 
-	const { fields, append, prepend, remove, swap, move, insert } = useFieldArray({
-		name: "ingredients", 
-		control
-	  });
+	const { fields, append } = useFieldArray({ name: "ingredients", control });
 
 	const foodContext = useContext(FormContext); 
 	const pageDisplay = foodContext?.step === 1 ? 'block' : 'hidden'; 
+
+	const addIngredient = () => append(
+		{ amount: undefined, measurement: '', ingredient: '' });
 
 	return (
 		<div className={`${pageDisplay} px-2`}>
@@ -42,6 +42,10 @@ const AddIngredients = () => {
 					{fields.map((ingredient, index) => (
 						<Ingredient key={ingredient.id} index={index} register={register} />
 					))}
+					<div className="mt-5">
+						<button className="bg-emerald-500 text-stone-100 text-sm py-1 px-3 rounded" 
+								onClick={addIngredient}>Add Ingredient</button>
+					</div>
 				</section>
 			</div>
 		</div>

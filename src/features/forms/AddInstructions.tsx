@@ -5,10 +5,7 @@ import FormContext from "~/context/FormContext";
 const AddInstructions = () => {
 	const { register, control } = useFormContext();
 
-	const { fields, append, prepend, remove, swap, move, insert } = useFieldArray({
-		name: "instructions", 
-		control
-	  });
+	const { fields, append } = useFieldArray({ name: "instructions", control });
 	  
 	const foodContext = useContext(FormContext); 
 	const pageDisplay = foodContext?.step === 2 ? 'block' : 'hidden'; 
@@ -24,6 +21,12 @@ const AddInstructions = () => {
 							<label htmlFor="instruction-1" className="absolute top-2 left-2.5 text-sm text-stone-700 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 z-10 origin-[0] peer-focus:text-emerald-600 peer-focus:dark:text-emerald-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-7">Instruction</label>
 						</div>
 					))}
+					<div className="mt-5">
+						<button className="bg-emerald-500 text-stone-100 text-sm py-1 px-3 rounded "
+								onClick={() => append({ instruction: ''})}>
+									Add Instruction
+						</button>
+					</div>
 				</section>
 				
 			</div>
