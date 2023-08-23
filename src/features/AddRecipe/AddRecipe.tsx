@@ -55,8 +55,6 @@ const AddRecipe = (): JSX.Element => {
 		nextStep
     } = helpers;
 
-	const formBtnLabel = canGoToNextStep ? 'Next' : 'Submit';
-
 	const onSubmit: SubmitHandler<FormValues> = (data) => {
 		console.log(data, "<===data validation")
 	};
@@ -72,12 +70,14 @@ const AddRecipe = (): JSX.Element => {
 						{
 							canGoToPreviousStep && ( 
 							<button type="button" 
-									className="mt-3 inline-flex w-40 justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0"
+									className="mt-3 inline-flex w-40 justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
 									onClick={() => previousStep()}>Back</button>)
 						}		
 						<button type={canGoToNextStep ? "button" : "submit"} 
-								className={`mt-3 inline-flex w-40 justify-center rounded-md bg-sky-950 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-sky-900 sm:ml-3 ${canGoToPreviousStep ? "" : 'ml-auto'}`}
-								onClick={() => nextStep()}>{formBtnLabel}</button>
+								className="mt-3 inline-flex w-40 justify-center rounded-md bg-sky-950 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-sky-900 sm:ml-3"
+								onClick={() => nextStep()}>
+									{canGoToNextStep ? 'Next' : 'Submit'}
+						</button>
 					</footer>
 				</form>
 			</FormProvider>
