@@ -10,7 +10,7 @@ interface Instruction {
 }
 
 interface Ingredients {
-	amount: number;
+	amount: number | string;
 	measurement: string | undefined;
 	ingredient: string;
 }
@@ -18,8 +18,8 @@ interface Ingredients {
 interface FormValues  {
 	recipeName: string;
 	mealType: string;
-	prepTime: number;
-	cookingTime: number;
+	prepTime: number | string;
+	cookingTime: number | string;
 	ingredients: Ingredients[];
 	instructions: Instruction[]
 }
@@ -30,13 +30,13 @@ const AddRecipe = (): JSX.Element => {
 		defaultValues: {
 			recipeName: "",
 			mealType: "",
-			prepTime: undefined,
-			cookingTime: undefined,
+			prepTime: "",
+			cookingTime: "",
 			ingredients: [
-				{ amount: undefined, measurement: '', ingredient: ''},
-				{ amount: undefined, measurement: '', ingredient: ''}, 
-				{ amount: undefined, measurement: '', ingredient: ''},
-			    { amount: undefined, measurement: '', ingredient: ''},   
+				{ amount: '', measurement: '', ingredient: ''},
+				{ amount: '', measurement: '', ingredient: ''}, 
+				{ amount: '', measurement: '', ingredient: ''},
+			    { amount: '', measurement: '', ingredient: ''},   
 			],
 			instructions: [
 				{ instruction: ''},
@@ -66,7 +66,7 @@ const AddRecipe = (): JSX.Element => {
 					<GeneralInfo />
 					<AddIngredients />
 					<AddInstructions />
-					<footer className="bg-gray-50 py-3 flex sm:px-6 justify-between px-4">
+					<footer className="bg-gray-50 py-3 flex justify-between px-2">
 						{
 							canGoToPreviousStep && ( 
 							<button type="button" 
@@ -74,7 +74,7 @@ const AddRecipe = (): JSX.Element => {
 									onClick={() => previousStep()}>Back</button>)
 						}		
 						<button type={canGoToNextStep ? "button" : "submit"} 
-								className="mt-3 inline-flex w-40 justify-center rounded-md bg-sky-950 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-sky-900 sm:ml-3"
+								className={`mt-3 inline-flex w-40 justify-center rounded-md bg-sky-950 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-sky-900 ${canGoToPreviousStep ? '' : 'ml-auto'}`}
 								onClick={() => nextStep()}>
 									{canGoToNextStep ? 'Next' : 'Submit'}
 						</button>
