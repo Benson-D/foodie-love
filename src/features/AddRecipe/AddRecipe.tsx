@@ -5,23 +5,19 @@ import AddIngredients from "../forms/AddIngredients";
 import AddInstructions from "../forms/AddInstructions";
 import { useForm, FormProvider, type SubmitHandler } from "react-hook-form";
 
-interface Instruction {
-	instruction: string;
-}
-
-interface Ingredients {
-	amount: number | string;
-	measurement: string | undefined;
-	ingredient: string;
-}
-
 interface FormValues  {
 	recipeName: string;
 	mealType: string;
 	prepTime: number | string;
 	cookingTime: number | string;
-	ingredients: Ingredients[];
-	instructions: Instruction[]
+	ingredients: {
+		amount: number | string;
+		measurement: string | undefined;
+		ingredient: string;
+	}[];
+	instructions: {
+		instruction: string | undefined;
+	}[]
 }
 
 const AddRecipe = (): JSX.Element => {
@@ -33,10 +29,10 @@ const AddRecipe = (): JSX.Element => {
 			prepTime: "",
 			cookingTime: "",
 			ingredients: [
-				{ amount: '', measurement: '', ingredient: ''},
-				{ amount: '', measurement: '', ingredient: ''}, 
-				{ amount: '', measurement: '', ingredient: ''},
-			    { amount: '', measurement: '', ingredient: ''},   
+				{ amount: 1, measurement: '', ingredient: ''},
+				{ amount: 1, measurement: '', ingredient: ''}, 
+				{ amount: 1, measurement: '', ingredient: ''},
+			    { amount: 1, measurement: '', ingredient: ''},   
 			],
 			instructions: [
 				{ instruction: ''},
@@ -45,7 +41,8 @@ const AddRecipe = (): JSX.Element => {
 				{ instruction: ''},
 				{ instruction: ''},
 			]
-		}
+		},
+		mode: "all"
 	});
 
 	const {
