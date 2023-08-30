@@ -19,7 +19,7 @@ const AddInstructions = () => {
 						<div key={instruction.id} className="relative mt-6 sm:pr-4">
 							<textarea {...register(`instructions.${index}.instruction`)} className="block rounded pl-2.5 pb-2.5 pt-2 w-full text-sm text-gray-900 border border-gray-300 appearance-none dark:border-gray-400 dark:focus:border-emerald-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" "/>
 							<label htmlFor="instruction-1" className="absolute top-2 left-2.5 text-sm text-stone-700 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 z-10 origin-[0] peer-focus:text-emerald-600 peer-focus:dark:text-emerald-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-7">Instruction</label>
-							<div className="mt-4 ml-96 pl-14">
+							<div className="mt-4 sm:ml-96 md:pl-14">
 								<button className="border text-sm py-1 px-4 hover:bg-red-400 hover:text-stone-100" 
 										onClick={() => remove(index)}>Delete</button>
 							</div>
